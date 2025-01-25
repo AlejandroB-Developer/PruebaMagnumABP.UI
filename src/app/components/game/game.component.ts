@@ -76,7 +76,7 @@ export class GameComponent implements OnInit {
       this.player2Name = player2.name;
     }
 
-    this.crearPartida();
+    this.createNewGame();
   }
 
   selectOption(player: number, option: Move) {
@@ -197,13 +197,7 @@ export class GameComponent implements OnInit {
       (response) => {
         this.rounds = response;
       },
-      (error) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: error,
-        });
-      }
+      (error) => {}
     );
 
     this.displayDialog = true;
@@ -228,14 +222,14 @@ export class GameComponent implements OnInit {
     this.totalRounds = 0;
     this.resetChoices();
     this.displayDialog = false;
-    this.crearPartida();
+    this.createNewGame();
   }
 
   exitGame() {
     this.router.navigate(['/']);
   }
 
-  crearPartida() {
+  createNewGame() {
     this.game = {
       isGameFinished: false,
       player1Id: this.player1Id,

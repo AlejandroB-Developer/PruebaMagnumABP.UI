@@ -7,44 +7,26 @@
     <p-card class="player-card">
       <ng-template pTemplate="header">
         <div class="p-card-title">
-          <p>Nombre:</p>
+          <p>Registro</p>
         </div>
       </ng-template>
       <div class="input-group">
         <input
           type="text"
-          placeholder="Nombre del jugador"
+          placeholder="Nombre del jugador 1"
           [(ngModel)]="player1Name"
           [disabled]="isPlayer1Ready"
+          (blur)="registerPlayer(1)"
         />
-        <button
-          (click)="registerPlayer(1)"
-          [disabled]="!player1Name || isPlayer1Ready"
-        >
-          ✔️
-        </button>
       </div>
-    </p-card>
-
-    <p-card class="player-card">
-      <ng-template pTemplate="header">
-        <div class="p-card-title">
-          <p>Nombre:</p>
-        </div>
-      </ng-template>
       <div class="input-group">
         <input
           type="text"
-          placeholder="Nombre del jugador"
+          placeholder="Nombre del jugador 2"
           [(ngModel)]="player2Name"
           [disabled]="isPlayer2Ready"
+          (blur)="registerPlayer(2)"
         />
-        <button
-          (click)="registerPlayer(2)"
-          [disabled]="!player2Name || isPlayer2Ready"
-        >
-          ✔️
-        </button>
       </div>
     </p-card>
   </div>

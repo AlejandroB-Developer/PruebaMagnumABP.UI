@@ -1,9 +1,9 @@
 // Variables de colores inspirados en tonos medievales
-$wood-dark: #4b2e17;  // Madera oscura
-$wood-medium: #8d5a2c;  // Madera media
-$wood-light: #d2a47c;  // Madera clara
-$highlight-gold: #e0c097;  // Tono dorado
-$shadow-dark: #000000;  // Sombra oscura
+$wood-dark: #4b2e17; // Madera oscura
+$wood-medium: #8d5a2c; // Madera media
+$wood-light: #d2a47c; // Madera clara
+$highlight-gold: #e0c097; // Tono dorado
+$shadow-dark: #000000; // Sombra oscura
 
 body {
   background-image: url("../../../assets/img/wallpaper.jpg");
@@ -28,9 +28,7 @@ body {
 h1 {
   font-size: 3em;
   color: $highlight-gold; // Tono pergamino claro
-  text-shadow:
-    0 0 5px $shadow-dark,
-    0 0 10px $shadow-dark,
+  text-shadow: 0 0 5px $shadow-dark, 0 0 10px $shadow-dark,
     0 0 20px $shadow-dark; /* Simula un brillo mágico */
   animation: move 3s ease-in-out infinite;
   position: relative;
@@ -40,7 +38,8 @@ h1 {
 
 /* Movimiento hacia adelante y atrás */
 @keyframes move {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0) scale(1); /* Posición inicial */
   }
   50% {
@@ -50,10 +49,10 @@ h1 {
 
 .player-card {
   flex: 1;
-  max-width: 400px;
+  max-width: 450px;
   padding: 20px;
   margin: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #8d5a2c;
 }
 
