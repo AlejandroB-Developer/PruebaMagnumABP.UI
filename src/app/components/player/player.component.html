@@ -1,0 +1,69 @@
+<p-toast></p-toast>
+<body>
+  <div>
+    <h1 class="mb-5">Rock! Paper! Scissors! 2</h1>
+  </div>
+  <div class="container">
+    <p-card class="player-card">
+      <ng-template pTemplate="header">
+        <div class="p-card-title">
+          <p>Nombre:</p>
+        </div>
+      </ng-template>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Nombre del jugador"
+          [(ngModel)]="player1Name"
+          [disabled]="isPlayer1Ready"
+        />
+        <button
+          (click)="registerPlayer(1)"
+          [disabled]="!player1Name || isPlayer1Ready"
+        >
+          ✔️
+        </button>
+      </div>
+    </p-card>
+
+    <p-card class="player-card">
+      <ng-template pTemplate="header">
+        <div class="p-card-title">
+          <p>Nombre:</p>
+        </div>
+      </ng-template>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Nombre del jugador"
+          [(ngModel)]="player2Name"
+          [disabled]="isPlayer2Ready"
+        />
+        <button
+          (click)="registerPlayer(2)"
+          [disabled]="!player2Name || isPlayer2Ready"
+        >
+          ✔️
+        </button>
+      </div>
+    </p-card>
+  </div>
+  <button (click)="showDialog()" class="continue-button">Reglas</button>
+  <button
+    [disabled]="!isPlayer1Ready || !isPlayer2Ready"
+    (click)="continue()"
+    class="continue-button"
+  >
+    Jugar
+  </button>
+</body>
+<p-dialog
+  header="Reglas"
+  [modal]="false"
+  [(visible)]="visible"
+  [style]="{ width: '50%' }"
+>
+  <div class="text-center">
+    <img src="../../../assets/img/rules.png" alt="" />
+  </div>
+</p-dialog>

@@ -1,0 +1,174 @@
+// Variables de colores inspirados en tonos medievales
+$wood-dark: #4b2e17;  // Madera oscura
+$wood-medium: #8d5a2c;  // Madera media
+$wood-light: #d2a47c;  // Madera clara
+$highlight-gold: #e0c097;  // Tono dorado
+$shadow-dark: #000000;  // Sombra oscura
+
+body {
+  background-image: url("../../../assets/img/wallpaper.jpg");
+  background-size: cover;
+  height: 100vh;
+  font-family: "Press Start 2P", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+}
+
+h1 {
+  font-size: 3em;
+  color: $highlight-gold; // Tono pergamino claro
+  text-shadow:
+    0 0 5px $shadow-dark,
+    0 0 10px $shadow-dark,
+    0 0 20px $shadow-dark; /* Simula un brillo mágico */
+  animation: move 3s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Movimiento hacia adelante y atrás */
+@keyframes move {
+  0%, 100% {
+    transform: translateX(0) scale(1); /* Posición inicial */
+  }
+  50% {
+    transform: translateX(15px) scale(1.05); /* Se mueve hacia adelante ligeramente */
+  }
+}
+
+.player-card {
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: #8d5a2c;
+}
+
+.p-card-title {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid $wood-medium;
+  border-radius: 30px;
+  outline: none;
+  color: $wood-dark;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 10px;
+
+  &:focus {
+    box-shadow: 0 0 8px #4b2e17;
+  }
+}
+
+button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, $wood-medium, $wood-light);
+  color: #fff;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px $shadow-dark;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 10px $shadow-dark;
+  }
+
+  &:disabled {
+    background-color: rgba(34, 240, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.continue-button {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin-top: 50px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, $wood-medium, $wood-light);
+  color: $wood-dark;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px $shadow-dark;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Press Start 2P", sans-serif;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px $shadow-dark;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+  }
+
+  .player-card {
+    height: 200px;
+    width: 70%;
+    margin-top: 50px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .continue-button {
+    width: 30%;
+    font-size: 10px;
+  }
+}

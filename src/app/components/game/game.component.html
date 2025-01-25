@@ -1,0 +1,201 @@
+<p-toast></p-toast>
+<body>
+  <div class="header-score">
+    <div class="score-container">
+      <div class="score-title">{{ player1Name }}</div>
+      <div class="score">{{ player1Wins }} Victorias</div>
+    </div>
+    <div class="score-container">
+      <div class="score-title">Rondas Totales</div>
+      <div class="score">{{ totalRounds }}</div>
+    </div>
+    <div class="score-container">
+      <div class="score-title">{{ player2Name }}</div>
+      <div class="score">{{ player2Wins }} Victorias</div>
+    </div>
+  </div>
+
+  <h2 *ngIf="roundWinnerName">Ganador de la ronda: {{ roundWinnerName }}</h2>
+  <h2 *ngIf="roundWinnerName === 'Empate'">Empate</h2>
+
+  <div>
+    <div class="player-side mt-3">
+      <p-card>
+        <div class="p-card-title">
+          <p>{{ player1Name }}</p>
+        </div>
+        <div class="options">
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player1Move === move.Piedra,
+              disabled: player1Selected
+            }"
+            (click)="selectOption(1, move.Piedra)"
+          >
+            <img
+              src="../../../assets/img/rock.png"
+              alt="Piedra"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player1Move === move.Papel,
+              disabled: player1Selected
+            }"
+            (click)="selectOption(1, move.Papel)"
+          >
+            <img
+              src="../../../assets/img/paper.png"
+              alt="Papel"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player1Move === move.Tijera,
+              disabled: player1Selected
+            }"
+            (click)="selectOption(1, move.Tijera)"
+          >
+            <img
+              src="../../../assets/img/scissors.png"
+              alt="Tijera"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player1Move === move.Lagarto,
+              disabled: player1Selected
+            }"
+            (click)="selectOption(1, move.Lagarto)"
+          >
+            <img
+              src="assets/img/lizzard.png"
+              alt="Lagarto"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player1Move === move.Spock,
+              disabled: player1Selected
+            }"
+            (click)="selectOption(1, move.Spock)"
+          >
+            <img
+              src="../../../assets/img/spock.png"
+              alt="Spock"
+              class="option-icon"
+            />
+          </p-card>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="player-side">
+      <p-card>
+        <div class="p-card-title">
+          <p>{{ player2Name }}</p>
+        </div>
+        <div class="options">
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player2Move === move.Piedra,
+              disabled: player2Selected
+            }"
+            (click)="selectOption(2, move.Piedra)"
+          >
+            <img
+              src="../../../assets/img/rock.png"
+              alt="Piedra"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player2Move === move.Papel,
+              disabled: player2Selected
+            }"
+            (click)="selectOption(2, move.Papel)"
+          >
+            <img
+              src="../../../assets/img/paper.png"
+              alt="Papel"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player2Move === move.Tijera,
+              disabled: player2Selected
+            }"
+            (click)="selectOption(2, move.Tijera)"
+          >
+            <img
+              src="../../../assets/img/scissors.png"
+              alt="Tijera"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player2Move === move.Lagarto,
+              disabled: player2Selected
+            }"
+            (click)="selectOption(2, move.Lagarto)"
+          >
+            <img
+              src="../../../assets/img/lizzard.png"
+              alt="Lagarto"
+              class="option-icon"
+            />
+          </p-card>
+          <p-card
+            class="option-card"
+            [ngClass]="{
+              selected: player2Move === move.Spock,
+              disabled: player2Selected
+            }"
+            (click)="selectOption(2, move.Spock)"
+          >
+            <img
+              src="../../../assets/img/spock.png"
+              alt="Spock"
+              class="option-icon"
+            />
+          </p-card>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <p-dialog
+    [(visible)]="displayDialog"
+    (modal)="(true)"
+    [closable]="false"
+    [header]="'Partida Finalizada'"
+  >
+    <div class="custom-modal-content">
+      <p style="color: white">{{ winner }} es el campeón!</p>
+      <div class="button-container">
+        <button class="button-reset" (click)="restartGame()">
+          <i class="pi pi-refresh"></i> Nuevo Juego
+        </button>
+        <button class="button-exit" (click)="exitGame()">
+          <i class="pi pi-times"></i> Salir
+        </button>
+      </div>
+    </div>
+  </p-dialog>
+</body>
